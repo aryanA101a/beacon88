@@ -90,17 +90,17 @@ class BeaconTask extends TaskHandler {
   @override
   Future<void> onStart(DateTime timestamp, SendPort? sendPort) async {
     log('onStart');
-    Timer.periodic(Duration(seconds: 3), (timer) {
-      log("testingForegrond");
-    });
+    // Timer.periodic(Duration(seconds: 3), (timer) {
+    //   log("testingForegrond");
+    // });
     // final timer =
     //     Timer(const Duration(seconds: 120), () => log('Timer finished'));
 
-    // Stream locStream = await LocationService.getCurrentLocationStream();
-    // streamSubscription = locStream.listen((event) {
-    //   log("gotLocUpdate");
-    //   sendPort?.send(event);
-    // });
+    Stream locStream = await LocationService.getCurrentLocationStream();
+    streamSubscription = locStream.listen((event) {
+      log("gotLocUpdate");
+      sendPort?.send(event);
+    });
   }
 
   @override

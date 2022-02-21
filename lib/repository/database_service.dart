@@ -32,4 +32,13 @@ class DatabaseService {
         .then((value) => log("Location Updated"))
         .catchError((error) => log("Failed to update location: $error"));
   }
+
+  static getBeaconLocationStream(String docId) {
+    return _firestoreCollection.doc(docId).snapshots();
+  }
+
+  static Future<GeoPoint> getBeaconLocation(String docId) async {
+    var location = await _firestoreCollection.doc(docId).get();
+    return location["location"];
+  }
 }

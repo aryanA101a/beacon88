@@ -4,6 +4,7 @@ import 'package:beacon/locator.dart';
 import 'package:beacon/models/beacon_model.dart';
 import 'package:beacon/view_model/home_screen_view_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_foreground_task/flutter_foreground_task.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
@@ -85,6 +86,16 @@ class BeaconTile extends StatelessWidget {
           ),
         ),
         title: Text(beacon.passkey),
+        trailing: InkResponse(
+          onTap: () {
+            Clipboard.setData(ClipboardData(text: beacon.passkey))
+                .then((value) {
+              ScaffoldMessenger.of(context)
+                  .showSnackBar(SnackBar(content: Text("Copied!")));
+            });
+          },
+          child: Icon(Icons.copy_rounded),
+        ),
       ),
     );
   }

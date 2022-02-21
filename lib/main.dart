@@ -1,7 +1,10 @@
 import 'package:beacon/locator.dart';
 import 'package:beacon/view_model/beacons_fragment_view_model.dart';
 import 'package:beacon/view_model/home_screen_view_model.dart';
+import 'package:beacon/view_model/track_beacon_map_view_model.dart';
+import 'package:beacon/view_model/track_beacon_view_model.dart';
 import 'package:beacon/views/home_screen.dart';
+import 'package:beacon/views/track_beacon_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -23,9 +26,12 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (context) => getIt<HomeScreenViewModel>(),
         ),
-        // ChangeNotifierProvider(
-        //   create: (context) => BeaconsFragmentViewModel(),
-        // )
+        ChangeNotifierProvider(
+          create: (context) => TrackBeaconViewModel(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => TrackBeaconMapViewModel(),
+        )
       ],
       child: MaterialApp(
         title: 'Flutter Demo',

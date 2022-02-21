@@ -9,11 +9,11 @@
 <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
    <application
         android:label="beacon"
-        android:name="${applicationName}"
+        
         android:icon="@mipmap/ic_launcher">
         <service android:name="com.pravera.flutter_foreground_task.service.ForegroundService" />
         <meta-data android:name="com.google.android.geo.API_KEY"
-               android:value="AIzaSyBEWPF4tEaVbzv9P8Yw8I1eM0YJ9uF4KXQ"/>
+               android:value="${googleMapsApiKey}"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"
